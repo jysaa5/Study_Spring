@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<!-- bean으로 등록 -->
+	<bean id="printer" class="myspring.di.xml.StringPrinter"/>
+	<bean id="consolePrinter" class="myspring.di.xml.ConsolePrinter"/>
+	
+	<!-- bean으로 등록하고 의존관계 설정 -->
+	<bean id="hello" class="myspring.di.xml.Hello">
+	   <!-- setName(name)과 맵핑 -->
+	   <property name="name" value="Violet-Spring"/>
+	   <!-- setPrinter(Printer)와 맵핑 -->
+	   <property name="printer" ref="printer"/>
+	</bean>
+
+</beans>
