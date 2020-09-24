@@ -1,4 +1,4 @@
-# 1일 1커밋 (1 commit per day)
+# Study for Spring & 1일 1코딩 1커밋
 
 <ul>
 <li>
