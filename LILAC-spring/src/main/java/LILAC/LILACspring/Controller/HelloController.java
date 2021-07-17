@@ -21,10 +21,20 @@ public class HelloController {
         return "hello-template";
     }
 
+    // 문자열 방식
     @GetMapping("hello-string")
     @ResponseBody
     public String helloString(@RequestParam("name") String name){
-        return "hello "+ name;
+        return "hello "+ name; //"hello spring"
+    }
+
+    // API
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello
+
+    static class Hello {
+        private String name;
     }
 
 }
