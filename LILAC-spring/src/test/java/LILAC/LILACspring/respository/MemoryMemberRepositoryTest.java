@@ -3,6 +3,7 @@ package LILAC.LILACspring.respository;
 import LILAC.LILACspring.domain.Member;
 import LILAC.LILACspring.repository.MemberRepository;
 import LILAC.LILACspring.repository.MemoryMemberRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class MemoryMemberRepositoryTest {
@@ -16,6 +17,8 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
         Member result = repository.findById(member.getId()).get();
-        System.out.println("result = " + (result == member));
+        // System.out.println("result = " + (result == member));
+        // Assertions.assertEquals(member, result);
+        Assertions.assertThat(member).isEqualTo(result);
     }
 }
