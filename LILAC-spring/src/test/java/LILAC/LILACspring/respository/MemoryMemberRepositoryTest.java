@@ -28,16 +28,17 @@ class MemoryMemberRepositoryTest {
     @Test
     public void findByName(){
         Member member1 = new Member();
-        member1.setName("spring1");
+        member1.setName("s1");
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("s2");
         repository.save(member2);
 
-        Member result1 = repository.findByName("spring1").get();
+        Member result1 = repository.findByName("s2").get();
 
-        Assertions.assertThat(result1).isEqualTo(member1);
+        //Assertions.assertThat(result1).isEqualTo(member1);
+        Assertions.assertThat(result1).isEqualTo(member2);
 
     }
 
