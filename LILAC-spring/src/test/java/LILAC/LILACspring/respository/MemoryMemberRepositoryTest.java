@@ -4,13 +4,14 @@ import LILAC.LILACspring.domain.Member;
 import LILAC.LILACspring.repository.MemberRepository;
 import LILAC.LILACspring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 class MemoryMemberRepositoryTest {
 
-    MemberRepository repository = new MemoryMemberRepository();
+    MemoryMemberRepository repository = new MemoryMemberRepository();
 
     @Test
     public void save(){
@@ -57,4 +58,12 @@ class MemoryMemberRepositoryTest {
 
         Assertions.assertThat(result2.size()).isEqualTo(2);
     }
+
+
+    // 데이터 클리어 (각 @Test가 끝나고 나서 실행이 되는 것)
+    @AfterEach
+    public void afterEach(){
+        repository.clearStore();
+    }
+
 }
