@@ -155,3 +155,7 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,windows,eclipse,java-web,gradle
+
+
+### Mac OS ###
+*.DS_Store
