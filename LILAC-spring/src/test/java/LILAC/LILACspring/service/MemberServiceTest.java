@@ -1,7 +1,10 @@
 package LILAC.LILACspring.service;
 
 import LILAC.LILACspring.domain.Member;
+import LILAC.LILACspring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,8 +12,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
 
+    @BeforeEach
+    public void beforeEach(){
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
+
+    @AfterEach
+    public void afterEach() {
+        memberRepository.clearStore();
+    }
+
+    /**
+     * 회원가입
+     * */
     @Test
     void join() {
         // given
@@ -19,7 +37,6 @@ class MemberServiceTest {
 
         // when
         Long saveId = memberService.join(member);
-
 
         // then
         Member findMember = memberService.findOne(saveId).get();
@@ -38,7 +55,7 @@ class MemberServiceTest {
         // when
         memberService.join(member1);
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
-        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원이다.");
+        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
 //        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 //        try {
